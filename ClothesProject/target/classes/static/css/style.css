@@ -1,0 +1,79 @@
+body {
+    background-color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #1f77cf;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons .btn-create-supplier {
+    color: #fff;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5vh;
+    background-image: linear-gradient(150deg, #9500ff, #09f, #00DDFF);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 22px;
+    transition: .3s;
+}
+
+.buttons .btn-list-supplier {
+    color: #fff;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5vh;
+    background-image: linear-gradient(150deg, #9500ff, #09f, #00DDFF);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 22px;
+    transition: .3s;
+}
+
+.buttons .btn-list-supplier span {
+    background-color: #111;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+.buttons .btn-list-supplier:hover span{
+    background: none;
+}
+
+.buttons .btn-list-supplier:active{
+    transform: scale(0.9);
+}
+
+.buttons .btn-create-supplier span {
+    background-color: #111;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+.buttons .btn-create-supplier:hover span{
+    background: none;
+}
+
+.buttons .btn-create-supplier:active{
+    transform: scale(0.9);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+
