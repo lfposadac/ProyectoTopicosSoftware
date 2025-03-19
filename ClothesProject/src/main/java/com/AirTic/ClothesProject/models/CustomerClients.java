@@ -12,7 +12,6 @@ public class CustomerClients {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String email;
     private String password;
     private String role;
     private Date createdAt;
@@ -32,6 +31,9 @@ public class CustomerClients {
     protected void onUpdate() {
         this.updatedAt = new Date();
     }
+
+    @Column(unique = true)
+    private String email;
     
     public CustomerClients(){}
 
