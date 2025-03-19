@@ -1,0 +1,80 @@
+/* Estilos generales */
+body {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #1f77cf;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Botones */
+.buttons .btn-create-supplier {
+  color: #fff;
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5vh;
+  background-image: linear-gradient(150deg, #9500ff, #09f, #00DDFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: .3s;
+}
+
+.buttons .btn-create-supplier span {
+  background-color: #111;
+  padding: 16px 24px;
+  border-radius: 6px;
+  transition: .3s;
+}
+
+.buttons .btn-create-supplier:hover span {
+  background: none;
+}
+
+.buttons .btn-create-supplier:active {
+  transform: scale(0.9);
+}
+
+/* Contenedor del formulario */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+/* Estilos del formulario */
+form {
+  background-color: #111;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  color: #fff;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.input-group input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,35 @@
+Para este proyecto necesitas: maven, hibernate, Docker.
+
+----------------------
+- Código fuente en src
+- Configuraciones en application.properties
+- Se usó thymeleaf
+- Se creó la base de datos con Docker
+----------------------
+
+----------------------
+Posible error
+----------------------
+- Si ya estás utilizando mynetwork tienes tres opciones:
+1. Eliminar tus dockers desde el desktop con la aplicación de docker
+- con docker network ls miras cuales estas utilizando
+2. Eliminar tu network con 'docker network rm mynetwork' y confirmas las redes existentes con docker network ls
+3. Utilizar una nueva network con nuevos nombres (si es necesario, cambie el nombre del contenedor phpMyAdmin también)
+   Además, debe cambiar la configuración en application.properties en src/main/resources
+- Asegurate de que el puerto 8080 este libre
+
+----------------------
+¿Cómo correr el código?
+----------------------
+1. Cree una red con docker 'docker network create mynetwork'
+2. Ejecute el contenedor de MYSQL 'docker run -d --name mysql-container --network mynetwork -e MYSQL_ROOT_PASSWORD=sebast -p 3306:3306 mysql:latest
+3. Ejecute el contenedor de phpMyAdmin 'docker run -d --name phpmyadmin-container --network mynetwork -e PMA_HOST=mysql-container -e PMA_PORT=3306 -p 8081:80 phpmyadmin/phpmyadmin:latest
+- localhost:8081
+4. Creer la base de datos "suppliers"
+5. Corrar el código con mvn spring-boot:run
+
+----------------------
+¿Cómo correr el código?
+----------------------
+1. Utilizar el comando mvn spring-boot:run en la raíz de la carpeta
+2. Ir a localhost:8080
