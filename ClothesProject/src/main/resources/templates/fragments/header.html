@@ -1,0 +1,23 @@
+<div th:fragment="header">
+    <header class="site-header">
+      <div class="logo">
+        <a th:href="@{/}" title="Home">AirTiclothes</a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <!--
+          <div sec:authorize="hasRole('ADMIN')">
+            <li><a th:href="@{/signOut}">Sign Up</a></li>
+          </div>
+        -->
+          <div sec:authorize="isAnonymous()">
+            <li><a th href="@{/signup}">Sign Up</a></li>
+          </div>
+          <li><a th:href="@{/}">Home</a></li>
+          <li><a th:href="@{/suppliers}">Suppliers</a></li>
+          <li><a th:href="@{/suppliers/create}">Create Suppliers</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  
