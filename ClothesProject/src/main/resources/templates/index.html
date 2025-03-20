@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
-        <title th:text="${title}">Create Supplier</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
-    </head>
-    <body>
-        <h1>HOLAAAAAAALOH</h1>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <title th:text="${title}">AirTiclothes - Home</title>
+  </head>
+  <body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>FC Sportwear</h1>
+        <p>Innovación y estilo en cada prenda</p>
+        <a th:href="@{/products}" class="btn-primary">Descubre ahora</a>
+      </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="features">
+      <div class="feature">
+        <h2>Diseño Único</h2>
+        <p>Prendas exclusivas para marcar tendencia.</p>
+      </div>
+      <div class="feature">
+        <h2>Calidad Premium</h2>
+        <p>Materiales de la mejor calidad para tu comodidad.</p>
+      </div>
+      <div class="feature">
+        <h2>Innovación</h2>
+        <p>Tecnología y estilo en cada detalle.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; Tienda de ropa por Luis y Sebas</p>
+    </footer>
+  </body>
 </html>

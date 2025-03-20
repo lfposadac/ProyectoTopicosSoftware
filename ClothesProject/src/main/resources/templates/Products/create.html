@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS para el formulario de creación -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Products/create.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <title>Create Product</title>
+  </head>
+  <body>
+    <!-- Incluye el header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+    
+    <div class="form-container">
+      <h1>Create Product</h1>
+      <form th:action="@{/products}" th:object="${products}" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" th:field="*{name}" placeholder="Enter product name" required />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" th:field="*{description}" placeholder="Enter product description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="size">Size:</label>
+          <input type="text" id="size" th:field="*{size}" placeholder="Enter product size" required />
+        </div>
+        <div class="form-group">
+          <label for="color">Color:</label>
+          <input type="text" id="color" th:field="*{color}" placeholder="Enter product color" required />
+        </div>
+        <div class="form-group">
+          <label for="material">Material:</label>
+          <input type="text" id="material" th:field="*{material}" placeholder="Enter product material" required />
+        </div>
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" step="0.01" id="price" th:field="*{price}" placeholder="Enter product price" required />
+        </div>
+        <div class="form-group">
+          <label for="stock">Stock:</label>
+          <input type="number" id="stock" th:field="*{stock}" placeholder="Enter stock quantity" required />
+        </div>
+        <div class="form-group">
+          <label for="genre">Genre:</label>
+          <input type="text" id="genre" th:field="*{genre}" placeholder="Enter product genre" required />
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input type="text" id="category" th:field="*{category}" placeholder="Enter product category" required />
+        </div>
+        <div class="form-group">
+          <label for="style">Style:</label>
+          <input type="text" id="style" th:field="*{style}" placeholder="Enter product style" required />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-submit">Create Product</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

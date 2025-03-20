@@ -1,20 +1,22 @@
-<div th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div
+  th:fragment="header"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
   <header class="site-header">
-      <div class="logo">
-          <a th:href="@{/}" title="Home">AirTiclothes</a>
-      </div>
-      <nav class="main-nav">
-          <ul>
-              <div sec:authorize="isAnonymous()">
-                  <li><a th:href="@{/signup}">Sign Up</a></li>
-              </div>
-              <div sec:authorize="isAuthenticated()">
-                  <li><a th:href="@{/logout}">Logout</a></li>
-              </div>
-              <li><a th:href="@{/}">Home</a></li>
-              <li><a th:href="@{/suppliers}">Suppliers</a></li>
-              <li><a th:href="@{/suppliers/create}">Create Suppliers</a></li>
-          </ul>
-      </nav>
+    <div class="logo">
+      <a th:href="@{/}" title="Home">FC Sportwear</a>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li sec:authorize="isAnonymous()"><a th:href="@{/signup}">Sign Up</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/products}">Products</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/suppliers}">Suppliers</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/suppliers/create}">Create Suppliers</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/products/create}">Create Products</a></li>
+
+        </ul>
+    </nav>
   </header>
 </div>

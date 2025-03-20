@@ -1,0 +1,78 @@
+/* showlist.css */
+body {
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.header.finisher-header {
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: #ff66cc;
+}
+
+header p {
+    color: #a8a8a8;
+}
+
+.success-message {
+    text-align: center;
+    color: #09f;
+    margin-bottom: 1rem;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.product-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 1rem;
+    max-width: 300px;
+    text-align: center;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.product-card h2 {
+    color: #ff66cc;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.btn-view {
+    padding: 0.5rem 1rem;
+    background-image: linear-gradient(150deg, #ff66cc, #9500ff, #09f, #00DDFF);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-view:hover {
+    background-image: linear-gradient(150deg, #ff85d0, #a200ff, #33ccff, #33ddff);
+}

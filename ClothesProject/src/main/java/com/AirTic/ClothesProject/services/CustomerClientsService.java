@@ -29,7 +29,7 @@ public class CustomerClientsService implements UserDetailsService {
             return User.builder()
                     .username(userObj.getEmail()) 
                     .password(userObj.getPassword())
-                    .roles("USER")
+                    .roles(userObj.getRole())
                     .build();
         } else {
             throw new UsernameNotFoundException(username);

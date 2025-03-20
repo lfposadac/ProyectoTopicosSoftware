@@ -1,0 +1,79 @@
+/* show.css */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal para los detalles del producto */
+.product-details {
+    max-width: 900px;
+    margin: 80px auto; /* espacio superior para evitar el header */
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Sección de imagen, ocupará una parte */
+.product-details .image-section {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-details .image-section img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Sección de información, ocupará la otra parte */
+.product-details .info-section {
+    flex: 2 1 400px;
+}
+.product-details .info-section h1 {
+    color: #ff66cc;
+    margin-bottom: 10px;
+}
+.product-details .info-section h2 {
+    color: #a8a8a8;
+    margin-bottom: 20px;
+}
+.product-details .info-section p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.product-details .info-section ul {
+    list-style: none;
+    padding: 0;
+}
+.product-details .info-section ul li {
+    margin-bottom: 10px;
+}
+.product-details .info-section ul li strong {
+    display: inline-block;
+    width: 120px;
+    color: #ff66cc;
+}
+
+/* Si la lista de imágenes está presente */
+.images {
+    margin-top: 20px;
+}
+.images img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Responsive: en pantallas pequeñas, las columnas se apilan */
+@media (max-width: 768px) {
+    .product-details {
+        flex-direction: column;
+    }
+}

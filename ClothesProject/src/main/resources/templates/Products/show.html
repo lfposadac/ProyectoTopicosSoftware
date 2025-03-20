@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS para la vista de detalles del producto -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Products/show.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <title th:text="${subtitle}">Product Details</title>
+  </head>
+  <body>
+    <!-- Incluye el header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+    
+    <div class="product-details">
+      <div class="image-section">
+        <!-- Si hay imágenes, se muestra la primera; si no, se muestra una por defecto -->
+        <div th:if="${#lists.isEmpty(product.images)}">
+          <img th:src="@{/images/default.png}" alt="Default product image" />
+        </div>
+        <div th:unless="${#lists.isEmpty(product.images)}">
+          <img th:src="@{${product.images[0]}}" alt="Product image" />
+        </div>
+      </div>
+      <div class="info-section">
+        <h1 th:text="${subtitle}">Product Name</h1>
+        <h2 th:text="${title}">Category</h2>
+        <p th:text="${product.description}">Description here</p>
+        <ul>
+          <li><strong>Size:</strong> <span th:text="${product.size}"></span></li>
+          <li><strong>Color:</strong> <span th:text="${product.color}"></span></li>
+          <li><strong>Material:</strong> <span th:text="${product.material}"></span></li>
+          <li><strong>Price:</strong> $<span th:text="${product.price}"></span></li>
+          <li><strong>Stock:</strong> <span th:text="${product.stock}"></span></li>
+          <li><strong>Genre:</strong> <span th:text="${product.genre}"></span></li>
+          <li><strong>Category:</strong> <span th:text="${product.category}"></span></li>
+          <li><strong>Style:</strong> <span th:text="${product.style}"></span></li>
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+</html>

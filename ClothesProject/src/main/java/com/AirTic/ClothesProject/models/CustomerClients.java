@@ -25,6 +25,9 @@ public class CustomerClients {
         Date now = new Date();
         this.createdAt = now;
         this.updatedAt = now;
+        if(this.role == null || this.role.isEmpty()) {
+            this.role = "USER";
+        }
     }
 
     @PreUpdate
@@ -38,18 +41,18 @@ public class CustomerClients {
     public CustomerClients(){}
 
     public CustomerClients(Long id, String name, String email, String password, String role, Date createdAt, Date updatedAt) {
-      this.id = id;
-      this.name = name;
-      this.email = email;
-      this.password = password;
-      this.role = role;
-      this.createdAt = createdAt;
-      this.updatedAt = updatedAt;
-  }
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     // Getters y setters
     public Long getId() {
-      return id;
+        return id;
     }
     public void setId(Long id) {
         this.id = id;

@@ -1,0 +1,56 @@
+/* create.css */
+body {
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+.form-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+h1 {
+    text-align: center;
+    color: #ff66cc;
+    margin-bottom: 1.5rem;
+}
+.form-group {
+    margin-bottom: 1.2rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #a8a8a8;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+}
+.btn-submit {
+    width: 100%;
+    padding: 0.8rem;
+    background-image: linear-gradient(150deg, #ff66cc, #9500ff, #09f, #00DDFF);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-submit:hover {
+    background-image: linear-gradient(150deg, #ff85d0, #a200ff, #33ccff, #33ddff);
+}
+.btn-submit:active {
+    transform: scale(0.98);
+}
