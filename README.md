@@ -1,2 +1,0 @@
-# ProyectoTopicosSoftware
-Proyecto clase TopicosSoftware
