@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Menú</title>
-</head>
 <body>
-  <!-- Declaramos el fragmento "menu" -->
   <nav th:fragment="menu">
+    <div class="logo">
+      <img src="images/menu/logo-negro.png">
+      <h3>SportWear</h3>
+    </div>
     <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/products">Productos</a></li>
-      <li><a href="/login">Login</a></li>
+      <li><a href="/">Collection</a></li>
+      <li><a href="/products">About Us</a></li>
+      <li><a href="/login">Sign Up</a></li>
+      <li><a href="/login">Sign In</a></li>
     </ul>
   </nav>
 </body>
