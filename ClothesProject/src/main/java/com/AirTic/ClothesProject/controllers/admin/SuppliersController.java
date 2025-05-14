@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.AirTic.ClothesProject.models.Suppliers;
 import com.AirTic.ClothesProject.repositories.SuppliersRepository;
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller

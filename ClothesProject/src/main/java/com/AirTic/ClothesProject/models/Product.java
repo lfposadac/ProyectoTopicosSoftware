@@ -1,11 +1,10 @@
 package com.AirTic.ClothesProject.models;
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Products {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +38,7 @@ public class Products {
     }
     
     public Product(String name, String description, String imageUrl, String size, String color, String material, Double price, Integer stock, String category, String style) {
-        this.name = name
+        this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
         this.size = size;
@@ -47,7 +46,6 @@ public class Products {
         this.material = material;
         this.price = price;
         this.stock = stock;
-        this.genre = genre;
         this.category = category;
         this.style = style;
     }

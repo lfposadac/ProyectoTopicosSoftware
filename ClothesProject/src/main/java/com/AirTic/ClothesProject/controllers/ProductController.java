@@ -1,39 +1,65 @@
 package com.AirTic.ClothesProject.controllers;
 
-import com.AirTic.ClothesProject.models.Products;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.AirTic.ClothesProject.models.Product;
 import com.AirTic.ClothesProject.services.ProductService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/products")
-public class ProductController.java {
-
-    private final ProductService productService;
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
 
     @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+    private ProductService productService;
 
     @GetMapping
-    public String listProducts(Model model){
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products)
-        return "products/produtcs_list";
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
-    @GetMapping("/products/{id}")
-    public String productDetail(@PathVariable Long id, MOdel model) {
-        Product product = productService.getProductById(id).orElseThrow(() -> new IllegalArgumentException("Product with id "+id+" not found"));
-        model.addAttribute("product", product);
-        return "products/unique_product_detail";
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return productService.getProductById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    
+    @PostMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+        Product product = productService.getProductById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "product not found with id: " + id));
+        product.setName(productDetails.getName());
+        product.setDescription(productDetails.getDescription());
+        product.setImageUrl(productDetails.getImageUrl());
+        product.setSize(productDetails.getSize());
+        product.setColor(productDetails.getColor());
+        product.setMaterial(productDetails.getMaterial());
+        product.setPrice(productDetails.getPrice());
+        product.setStock(productDetails.getStock());
+        product.setCategory(productDetails.getCategory());
+        product.setStyle(productDetails.getStyle());
+        Product updateProduct = productService.saveProduct(product);
+        return ResponseEntity.ok(updateProduct);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        if(!productService.getProductById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }

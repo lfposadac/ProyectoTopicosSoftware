@@ -1,27 +1,28 @@
 package com.AirTic.ClothesProject.services;
 
-import com.AirTic.ClothesProject.models.Products;
-import com.AirTic.ClothesProject.repositories.ProductsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.AirTic.ClothesProject.models.Product;
+import com.AirTic.ClothesProject.repositories.ProductRepository;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
 
-    @Autowired
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
-    public Optional<Products> getProductById(Long id) {
+    public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
-    public Products saveProduct(Products product) {
+    public Product saveProduct(Product product) {
         return productRepository.save(product);
     }
     public List<Product> getProductsByCategory(String category) {
@@ -43,6 +44,11 @@ public class ProductService {
         product.setCategory(productDetails.getCategory());
         product.setStyle(productDetails.getStyle());
 
-        return ProductRepository.save(product);
+        return productRepository.save(product);
+    }
+
+    public void deleteProduct(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id " + id));
+        productRepository.delete(product);
     }
 }
