@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our products</title>
+    <link rel="stylesheet" th:href="@{/css/products_list.css}">
+<body>
+    </header th:replace="~{menu :: menu}"></header>
+    
+    <main>
+        <aside class="filters">
+            <h3>Filtros</h3>
+            <form th:action="@{/products/category/{categoryName}(categoryName=${currentCategory})}" method="get" id="filter-form">
+                <div class="filter-group">
+                    <label for="color-filter">Color</label>
+                    <select id="color-filter" name="color" class="filter-select">
+                        <option value="">Todos</option>
+                        <th:block th:if="${availableColorsForFilter}">
+                            <option th:each="colOpt : ${availableColorsForFilter}"
+                                    th:value="${colOpt}"
+                                    th:text="${#strings.capitalize(colOpt)}"
+                                    th:selected="${colOpt == selectedColor}"></option>
+                        </th:block>
+                        <th:block th:unless="${availableColorsForFilter}">
+                            <option value="negro" th:selected="${'negro' == selectedColor}">Negro</option>
+                            <option value="blanco" th:selected="${'blanco' == selectedColor}">Blanco</option>
+                            <option value="azul" th:selected="${'azul' == selectedColor}">Azul</option>
+                            </th:block>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="size-filter">Talla</label>
+                    <select id="size-filter" name="size" class="filter-select">
+                        <option value="">Todas</option>
+                        <th:block th:if="${availableSizesForFilter}">
+                            <option th:each="sizeOpt : ${availableSizesForFilter}"
+                                    th:value="${sizeOpt}"
+                                    th:text="${sizeOpt}"
+                                    th:selected="${sizeOpt == selectedSize}"></option>
+                        </th:block>
+                        <th:block th:unless="${availableSizesForFilter}">
+                            <option value="S" th:selected="${'S' == selectedSize}">S</option>
+                            <option value="M" th:selected="${'M' == selectedSize}">M</option>
+                            <option value="L" th:selected="${'L' == selectedSize}">L</option>
+                            </th:block>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="price-range">Rango de precio</label>
+                    <div class="price-inputs">
+                        <input type="number" name="minPrice" placeholder="Mín"
+                            th:value="${selectedMinPrice}" class="price-input">
+                    <span>-</span>
+                    <input type="number" name="maxPrice" placeholder="Máx"
+                            th:value="${selectedMaxPrice}" class="price-input">
+                </div>
+                    <div class_comment="price-slider-placeholder">
+                        <p class="price-display" th:text="${(selectedMinPrice != null ? #numbers.formatCurrency(selectedMinPrice, 'COP', 'CO') : '0') + ' - ' + (selectedMaxPrice != null ? #numbers.formatCurrency(selectedMaxPrice, 'COP', 'CO') : #numbers.formatCurrency(100000, 'COP', 'CO'))}">
+                            9,900 - 100,000
+                        </p>
+                    </div>
+                </div>
+
+                <button type="submit" class="filter-button">Aplicar Filtros</button>
+            </form>
+        </aside>
+
+        <section class="product-display">
+            <h2 id="current-category-title" th:text="${#strings.capitalizeWords(currentCategory.toLowerCase())}">Shorts</h2>
+
+            <div th:if="${products.isEmpty()}" class="product-grid-empty">
+                <p>No se encontraron productos para esta categoría o con los filtros seleccionados.</p>
+            </div>
+
+            <div th:unless="${products.isEmpty()}" id="product-grid" class="product-grid">
+                <div th:each="product : ${products}" class="product-card">
+                    <a th:href="@{/products/details/{productId}(productId=${product.id})}" class="product-link"> <div class="product-image-container">
+                            <img th:src="${product.imageUrl != null && !#strings.isEmpty(product.imageUrl) ? product.imageUrl : '/images/placeholder.png'}"
+                                th:alt="${product.name}" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-name" th:text="${product.name}">Pantaloneta Negra</h4>
+                            <p class="product-price" th:text="${#numbers.formatCurrency(product.price, 'COP', 'CO')}">$10,900</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

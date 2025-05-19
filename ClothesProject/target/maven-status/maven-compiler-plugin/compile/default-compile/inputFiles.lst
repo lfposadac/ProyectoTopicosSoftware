@@ -1,4 +1,6 @@
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\ClothesProjectApplication.java
+C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\config\AdminUserInitializer.java
+C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\admin\AdminProductController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\admin\SuppliersController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\CartController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\CustomerClientsController.java
@@ -6,6 +8,7 @@ C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\Proyect
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\InvoiceController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\OrderController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\ProductController.java
+C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\ProductViewsController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\RecommendationController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\controllers\UserController.java
 C:\SEBAS-2025\septimoSemestre\Topicos de ingeniería de software\Entrega\ProyectoTopicosSoftware\ClothesProject\src\main\java\com\AirTic\ClothesProject\models\CustomerClients.java

@@ -27,4 +27,8 @@ public class CustomerClientsService {
         // Guardar el cliente en la base de datos
         return customerClientsRepository.save(customer);
     }
+
+    public CustomerClients findByEmail(String adminEmail) {
+        return customerClientsRepository.findByEmail(adminEmail);
+    }
 }

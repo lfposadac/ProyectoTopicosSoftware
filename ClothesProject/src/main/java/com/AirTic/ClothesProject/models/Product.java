@@ -1,6 +1,7 @@
 package com.AirTic.ClothesProject.models;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "products")
@@ -10,9 +11,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     @Column(nullable = false)
     private String name;
 
+    @Size(max = 1000, message = "Description must be less than 1000 characters")
     @Lob
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -25,12 +29,22 @@ public class Product {
     private String color;
     private String material;
 
+
+    @NotNull(message = "Price is required")
+    @DecimalMin(value = "0.01", message = "Price must be greater than 0")
     @Column(nullable = false)
     private Double price;
 
+    @Min(value = 0, message = "Stock must be greater than 0")
     private Integer stock;
+
+    @NotBlank(message = "Category is required")
     private String category;
+
+    @NotBlank(message = "Style is required")
     private String style;
+
+    
     private LocalDate createdAt;
     private LocalDate updatedAt;
 

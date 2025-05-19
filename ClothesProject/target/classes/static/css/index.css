@@ -96,6 +96,10 @@ nav ul li.dropdown > ul.dropdown-content li a:hover {
 li.dropdown:hover .arrow {
     transform: rotate(180deg);
 }
+/* MOSTRAR EL MENÚ DESPLEGABLE CON HOVER */
+nav ul li.dropdown:hover > ul.dropdown-content {
+    display: block; /* O flex si necesitas más control de alineación interna */
+}
 
 /* SECCIÓN DEL LOGO */
 .logo {

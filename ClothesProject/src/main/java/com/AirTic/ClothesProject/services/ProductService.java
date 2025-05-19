@@ -51,4 +51,20 @@ public class ProductService {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id " + id));
         productRepository.delete(product);
     }
+
+    public List<String> getAvailableColorsForCategory(String categoryName){
+        List<Product> products = productRepository.findByCategory(categoryName);
+        return products.stream()
+                .map(Product::getColor)
+                .distinct()
+                .toList();
+    }
+
+    public List<String> getAvailableSizesForCategory(String categoryName) {
+        List<Product> products = productRepository.findByCategory(categoryName);
+        return products.stream()
+                .map(Product::getSize)
+                .distinct()
+                .toList();
+    }
 }

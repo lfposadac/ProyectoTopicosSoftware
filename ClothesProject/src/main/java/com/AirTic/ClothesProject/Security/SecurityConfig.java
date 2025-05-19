@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -18,26 +19,30 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity
-            // Desactivar CSRF para pruebas (considera activarlo en producción)
+        httpSecurity
             .csrf(csrf -> csrf.disable())
-            
-            // Configuración de login
-            .formLogin(httpForm -> {
-                httpForm
+            .formLogin(formLogin ->
+                formLogin
                     .loginPage("/login")
-                    .permitAll();
-            })
-            
-            .authorizeHttpRequests(registry -> {
-                registry.requestMatchers("/req/signup", "/signup", "/register", "/css/**", "/js/**", "/images/**", "/te", "/").permitAll();
+                    .loginProcessingUrl("perform_login")
+                    .defaultSuccessUrl("/", true)
+                    .failureUrl("/login?error=true")
+                    .permitAll()
+            )
+            .logout(logout ->
+                logout
+                    .logoutUrl("/perform_logout")
+                    .logoutSuccessUrl("/login?logout=true")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
+            )
+            .authorizeHttpRequests(authorizeRequests -> 
+                authorizeRequests.requestMatchers("/", "/login", "/signup", "/css/**", "/js/**", "/images/**", "/products/category").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 
-                registry.requestMatchers("/api/register/**").permitAll();
-                
-                registry.anyRequest().authenticated();
-            })
-            
-            // Construir la configuración
-            .build();
+            );
+        return httpSecurity.build();
     }
 }

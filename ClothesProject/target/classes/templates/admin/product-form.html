@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:layout:decorator="http://www.ultraq.net.nz/thymeleaf/layout/decorator"
+    xmlns:layout:fragment="http://www.ultraq.net.nz/thymeleaf/layout/fragment">
+<head>
+    <title>Product layout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="container mt-4">
+            <h2 th:text="${pageTitle ?: 'Product Form'}">Product Form</h2>
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+            <form th:action="${formAction}" th:object="${product}" method="post"></form>
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name of the product</label>
+                    <input type="text" id="name" th:field="*{name}" class="form-control" required />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">
+                        Error with the name.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción:</label>
+                    <textarea id="description" th:field="*{description}" class="form-control" rows="3"></textarea>
+                    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">Error en la descripción</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="number" id="price" th:field="*{price}" step="0.01" class="form-control" required />
+                    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">Error en el precio</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock (Cantidad):</label>
+                    <input type="number" id="stock" th:field="*{stock}" class="form-control" />
+                    <div th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}" class="text-danger">Error en el stock</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Categoría:</label>
+                    <select id="category" th:field="*{category}" class="form-select" required>
+                        <option value="">Seleccione una categoría</option>
+                        <option th:each="cat : ${availableCategories}" th:value="${cat}" th:text="${cat}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger">Error en la categoría</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">URL de la Imagen:</label>
+                    <input type="url" id="imageUrl" th:field="*{imageUrl}" class="form-control" />
+                    <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-danger">Error en la URL</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="size" class="form-label">Talla:</label>
+                    <select id="size" th:field="*{size}" class="form-select">
+                        <option value="">Seleccione una talla (opcional)</option>
+                        <option th:each="s : ${availableSizes}" th:value="${s}" th:text="${s}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="text-danger">Error en la talla</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="color" class="form-label">Color:</label>
+                    <select id="color" th:field="*{color}" class="form-select">
+                        <option value="">Seleccione un color (opcional)</option>
+                        <option th:each="c : ${availableColors}" th:value="${c}" th:text="${c}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="text-danger">Error en el color</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="material" class="form-label">Material:</label>
+                    <input type="text" id="material" th:field="*{material}" class="form-control" />
+                    <div th:if="${#fields.hasErrors('material')}" th:errors="*{material}" class="text-danger">Error en el material</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="style" class="form-label">Estilo:</label>
+                    <input type="text" id="style" th:field="*{style}" class="form-control" />
+                    <div th:if="${#fields.hasErrors('style')}" th:errors="*{style}" class="text-danger">Error en el estilo</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                <a th:href="@{/admin/products/list}" class="btn btn-secondary">Cancelar</a>
+
+            </form>
+        </div>
+
+    </section>
+    
+</body>
+</html>
