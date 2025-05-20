@@ -7,9 +7,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
@@ -24,7 +26,7 @@ public class SecurityConfig {
             .formLogin(formLogin ->
                 formLogin
                     .loginPage("/login")
-                    .loginProcessingUrl("perform_login")
+                    .loginProcessingUrl("/perform_login")
                     .defaultSuccessUrl("/", true)
                     .failureUrl("/login?error=true")
                     .permitAll()
@@ -38,8 +40,11 @@ public class SecurityConfig {
                     .permitAll()
             )
             .authorizeHttpRequests(authorizeRequests -> 
-                authorizeRequests.requestMatchers("/", "/login", "/signup", "/css/**", "/js/**", "/images/**", "/products/category").permitAll()
+                authorizeRequests.requestMatchers("/", "/login", "/signup", "/css/**", "/js/**", "/images/**", "/products/category", "/perform_login").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/suppliers/create").hasRole("ADMIN")
+                .requestMatchers("/suppliers/delete/**").hasRole("ADMIN")
+                .requestMatchers("/suppliers", "/suppliers/{id}").authenticated()
                 .anyRequest().authenticated()
                 
             );

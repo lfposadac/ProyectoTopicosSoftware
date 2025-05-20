@@ -1,0 +1,145 @@
+body {
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333333;
+}
+
+/* MENU */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #ffffff;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:70px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-content-area {
+    padding-top:70px;
+}
+
+body {
+    margin-top: 70px;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+nav ul li {
+    margin: 0;
+    position: relative;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: color 0.3s ease;
+    padding-right: 10px 15px;
+    display: inline-block;
+}
+nav ul li a:hover {
+    color: #000000;
+    font-weight: bold;
+}
+.logout-button {
+    background: none;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.3rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: color 0.3s ease;
+    padding: 10px 15px;
+    display: inline-block;
+    line-height: normal;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.logout-button:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+
+/* MENU DESPLEGABLE */
+nav ul li.dropdown > ul.dropdown-content {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    background:#ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    padding:10px 0;
+    border-radius: 0 0 4px 4px;
+    list-style: none;
+    margin-top: 0;
+    z-index: 1001;
+}
+nav ul li.dropdown > ul.dropdown-content li {
+    width:100%;
+    margin: 0;
+    padding: 0;
+}
+nav ul li.dropdown > ul.dropdown-content li a {
+    padding: 12px 20px;
+    display: block;
+    color: #333333;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+nav ul li.dropdown > ul.dropdown-content li a:hover {
+    background-color: #f0f0f0;
+    color: #000000;
+    font-weight: normal;
+}
+.arrow {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+li.dropdown:hover .arrow {
+    transform: rotate(180deg);
+}
+/* MOSTRAR EL MENÚ DESPLEGABLE CON HOVER */
+nav ul li.dropdown:hover > ul.dropdown-content {
+    display: block; /* O flex si necesitas más control de alineación interna */
+}
+
+/* SECCIÓN DEL LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    height: 6rem;
+    width: auto;
+}
+.logo h3 {
+    color: #000000;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}

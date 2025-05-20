@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class CustomerClientsService {
 
@@ -14,17 +16,21 @@ public class CustomerClientsService {
     
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    private final String DEFAULT_USER_ROLE = "ROLE_USER";
     
     public CustomerClients registerCustomer(CustomerClients customer) {
-        // Verificar si el email ya existe
-        if(customerClientsRepository.findByEmail(customer.getEmail()) != null) {
-            throw new RuntimeException("El email ya está en uso");
+        if (customerClientsRepository.findByEmail(customer.getEmail()) != null) {
+            if (customer.getId() == null && customerClientsRepository.findByEmail(customer.getEmail()) != null) {
+                 throw new RuntimeException("Email is already in use: " + customer.getEmail());
+            }
         }
-        
-        // Encriptar la contraseña
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        
-        // Guardar el cliente en la base de datos
+        if (customer.getPassword() != null && !customer.getPassword().startsWith("$2a$")) {
+             customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        }
+        if (customer.getRole() == null || customer.getRole().isEmpty()) {
+            customer.setRole(DEFAULT_USER_ROLE);
+        }
         return customerClientsRepository.save(customer);
     }
 

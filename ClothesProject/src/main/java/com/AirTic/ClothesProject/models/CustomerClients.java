@@ -11,11 +11,18 @@ public class CustomerClients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String email;
     private String password;
     private String role;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
     @OneToMany(mappedBy = "customerClients", cascade = CascadeType.ALL)
@@ -24,18 +31,30 @@ public class CustomerClients {
     public CustomerClients(){}
 
     public CustomerClients(Long id, String name, String email, String password, String role, Date createdAt, Date updatedAt) {
-      this.id = id;
-      this.name = name;
-      this.email = email;
-      this.password = password;
-      this.role = role;
-      this.createdAt = createdAt;
-      this.updatedAt = updatedAt;
-  }
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Date();
+    }
+
 
     // Getters y setters
     public Long getId() {
-      return id;
+        return id;
     }
     public void setId(Long id) {
         this.id = id;
@@ -83,8 +102,5 @@ public class CustomerClients {
         this.updatedAt = updatedAt;
     }
 
-    public void save(CustomerClients existingAdmin) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
+
 }
