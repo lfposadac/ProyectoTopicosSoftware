@@ -1,0 +1,14 @@
+# Usa una imagen base con Java 17 (ajusta si usas otra versión)
+FROM openjdk:17-jdk-slim
+
+# Define el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copia el JAR generado por Maven al contenedor
+COPY target/ClothesProject-0.0.1-SNAPSHOT.jar app.jar
+
+# Expone el puerto del contenedor
+EXPOSE 8080
+
+# Comando para ejecutar la app
+ENTRYPOINT ["java", "-jar", "app.jar"]
