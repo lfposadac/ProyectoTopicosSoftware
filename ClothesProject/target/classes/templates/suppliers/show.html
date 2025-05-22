@@ -29,7 +29,7 @@
             <span th:text="${suppliers.email}">Supplier Email</span>
           </p>
           <div class="buttons">
-            <a th:href="@{/suppliers}" class="btn-back">Back to List</a>
+            <a th:href="@{/suppliers}" class="btn-back" th:text="#{suppliers.back}">Back to List</a>
 
             <form
               th:action="@{'/suppliers/' + ${suppliers.id}}"
@@ -37,7 +37,7 @@
               style="display: inline"
             >
               <input type="hidden" name="_method" value="delete" />
-              <button type="submit" class="btn-submit">
+              <button type="submit" class="btn-submit" th:text="#{suppliers.button}">
                 <strong>Delete</strong>
               </button>
             </form>

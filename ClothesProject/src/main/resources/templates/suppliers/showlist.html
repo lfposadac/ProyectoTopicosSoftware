@@ -28,7 +28,7 @@
               <strong>Phone:</strong>
               <span th:text="${supplier.phoneNumber}">Supplier Phone</span>
             </p>
-            <a th:href="@{'/suppliers/' + ${supplier.id}}" class="btn-view"
+            <a th:href="@{'/suppliers/' + ${supplier.id}}" class="btn-view" th:text="#{suppliers.view}"
               >View Details</a
             >
           </div>

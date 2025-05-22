@@ -4,9 +4,9 @@
       </div>
       <nav class="main-nav">
         <ul>
-          <li><a th:href="@{/}">Home</a></li>
-          <li><a th:href="@{/suppliers}">Suppliers</a></li>
-          <li><a th:href="@{/suppliers/create}">Create Suppliers</a></li>
+          <li><a th:href="@{/}" th:text="#{nav.home}">Home</a></li>
+          <li><a th:href="@{/suppliers}" th:text="#{nav.suppliers}">Suppliers</a></li>
+          <li><a th:href="@{/suppliers/create}" th:text="#{nav.create.suppliers}">Create Suppliers</a></li>
         </ul>
       </nav>
     </header>
